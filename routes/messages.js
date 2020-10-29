@@ -3,7 +3,7 @@ const express = require('express'),
 	  { createMessage, getMessage, deleteMessage } = require('../handlers/messages');
 
 router.post('/', createMessage);
-router.get('/:messageId', getMessage);
-router.delete('/:messageId', deleteMessage);
+router.get('/:message_id', getMessage);
+router.delete('/:message_id', deleteMessage);
 
 module.exports = router;

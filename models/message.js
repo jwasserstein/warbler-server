@@ -10,13 +10,13 @@ messageSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'user'
-	}
-});
+	} 
+}, {timestamps: true});
 
 messageSchema.pre('remove', async function(next){
 	try {
-		let user = User.findById(this.user);
-		user.message.remove(this.id);
+		let user = await User.findById(this.user);
+		user.messages = user.messages.filter(m => m != this.id);
 		await user.save();
 		return next();
 	} catch(err) {
