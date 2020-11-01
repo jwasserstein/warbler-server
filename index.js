@@ -9,6 +9,8 @@ const express                              = require('express'),
 	  { loginRequired, ensureCorrectUser } = require('./middleware/auth'),
 	  db                                   = require('./models');
 
+const PORT = process.env.PORT || 3001;
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
@@ -31,4 +33,4 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(3000, () => console.log('Listening on port 3000'));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
